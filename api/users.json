@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "nama": "Jose Mourinho",
+      "alamat": "Manchester "
+    },
+    {
+      "id": 3,
+      "nama": "Antonio Conte",
+      "alamat": "West London"
+    },
+    {
+      "id": 4,
+      "nama": "Pep Guardiola",
+      "alamat": "Manchester"
+    }
+  ]
+}
