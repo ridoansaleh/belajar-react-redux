@@ -1,6 +1,7 @@
-import { ADD_USER, FETCH_USERS, DELETE_USER } from './user-type';
+import { ADD_USER, FETCH_USERS, DELETE_USER, UPDATE_AN_USER } from './user-type';
 
 const userReducer = (state = [], action) => {
+    console.log('action : ', action);
     switch (action.type) {
         case ADD_USER:
             return [
@@ -19,6 +20,11 @@ const userReducer = (state = [], action) => {
             return res
         case FETCH_USERS:
             return action.data
+        case UPDATE_AN_USER: 
+            return [
+                ...state,
+                action.data
+            ]
         default:
             return state
     }

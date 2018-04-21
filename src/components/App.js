@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { addNewUser, fetchAllUsers, deleteUser } from './user-action';
-import './app-style.css';
+import '../app-style.css';
 
 class App extends Component {
 
@@ -12,7 +12,8 @@ class App extends Component {
     this.state = {
       nama: '',
       alamat: '',
-      users: []
+      users: [],
+      formStatus: true
     }
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -79,12 +80,18 @@ class App extends Component {
       })
       .then(function (response) {
         that.props.saveUser(response.data);
+        that.setState({
+          nama: '',
+          alamat: ''
+        });
       })
       .catch(function (error) {
         console.log(error)
       });
     } else {
-      alert("Error: Form tidak boleh kosong");
+      that.setState({
+        formStatus: false
+      });
     }
   }
 
@@ -92,7 +99,7 @@ class App extends Component {
     const { nama, alamat } = this.state;
     let that = this;
     return (
-      <div>
+      <div className="container">
         <table id="users">
           <thead>
             <tr>
@@ -113,6 +120,8 @@ class App extends Component {
                     <td>{user.alamat}</td>
                     <td>
                       <a href="/" onClick={ (e) => that.deleteUser(e, user.id) }> Hapus </a>
+                      {' | '}
+                      <Link to={`/edit/${user.id}`}> Edit </Link>
                     </td>
                   </tr>
                 )
@@ -131,19 +140,17 @@ class App extends Component {
             <input type="submit" value="Simpan" />
           </form>
         </div>
+        { !this.state.formStatus && <div className="warning-message">Form tidak boleh kosong</div> }
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  users: state
-})
+App.protoTypes = {
+    users: PropTypes.object,
+    saveUser: PropTypes.func,
+    getAllUsers: PropTypes.func,
+    deleteUser: PropTypes.func
+}
 
-const mapActionToProps = dispatch => ({
-  saveUser: user => dispatch(addNewUser(user)),
-  getAllUsers: users => dispatch(fetchAllUsers(users)),
-  deleteUser: usersleft => dispatch(deleteUser(usersleft))
-})
-
-export default connect(mapStateToProps, mapActionToProps)(App);
+export default App
