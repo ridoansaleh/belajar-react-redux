@@ -9,8 +9,8 @@ const Root = ({ store }) => (
   <Provider store={store}>
     <Router>
       <div>
-        <Route exact path="/" component={AppContainer} />
-        <Route path="/edit/:userId?" component={User} />
+        <Route exact path="/belajar-react-redux" component={AppContainer} />
+        <Route path="/belajar-react-redux/edit/:userId?" component={User} />
       </div>
     </Router>
   </Provider>

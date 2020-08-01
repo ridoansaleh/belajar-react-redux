@@ -132,7 +132,10 @@ class App extends Component {
                         Hapus{" "}
                       </a>
                       {" | "}
-                      <Link to={`/edit/${user.id}`}> Edit </Link>
+                      <Link to={`/belajar-react-redux/edit/${user.id}`}>
+                        {" "}
+                        Edit{" "}
+                      </Link>
                     </td>
                   </tr>
                 );

@@ -99,7 +99,8 @@ class User extends Component {
         </form>
         {this.state.formSuccess && (
           <div className="success-message">
-            Data berhasil diubah. Ingin <Link to="/"> kembali </Link>?
+            Data berhasil diubah. Ingin{" "}
+            <Link to="/belajar-react-redux"> kembali </Link>?
           </div>
         )}
         {!this.state.formStatus && (
