@@ -5,7 +5,7 @@
   "private": true,
   "author": "ridoansaleh",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
